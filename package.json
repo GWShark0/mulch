@@ -1,0 +1,49 @@
+{
+  "name": "mulch",
+  "version": "1.0.0",
+  "description": "mulch",
+  "main": "dist/mulch.js",
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GWShark0/mulch.git"
+  },
+  "author": "Greg Douglas <gwshark0@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GWShark0/mulch/issues"
+  },
+  "homepage": "https://github.com/GWShark0/mulch#readme",
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/__setupTests.js"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

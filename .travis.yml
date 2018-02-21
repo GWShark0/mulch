@@ -1,0 +1,16 @@
+language: node_js
+script:
+  - yarn test
+  - yarn build
+cache: yarn
+deploy:
+  on:
+    tags: true
+  skip_cleanup: true
+  provider: s3
+  access_key_id: $ARTIFACTS_KEY
+  secret_access_key: $ARTIFACTS_SECRET
+  bucket: $ARTIFACTS_BUCKET
+  acl: public_read
+  local_dir: dist
+  upload-dir: $(cat package.json | jq -r '.version')
