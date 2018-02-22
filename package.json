@@ -1,6 +1,6 @@
 {
   "name": "dreg-mulch",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "mulch",
   "main": "dist/mulch.js",
   "engines": {
