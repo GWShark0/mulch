@@ -4,11 +4,23 @@ script:
 - yarn build
 cache: yarn
 deploy:
-  on:
-    repo: GWShark0/mulch
-  skip_cleanup: true
+  - provider: npm
+    on:
+      tags: true
+      repo: GWShark0/mulch
+    skip_cleanup: true
+    email: gwshark0@gmail.com
+    api_key:
+      secure: olX0d/mUwchzaBhfmKzre7X9Yp1v+acPMgAAQ6aXdPTJv2J/3Tg4CZWYa4O52VmIGCsE6KxhyoYuCwSPcuEfUrAYxum4oFeBDtFYbdxyO7Z7YSXz5ycdkUqGMVr7fLxSj9pHNGzXx/FL2WzhCycz52Zrf6Y8pJ31H/BNofUQ13d11Oxy2lC/Sg/D8eRZYX4F4jIVEypVxPsXU82TmUpwatsxWu4Tx2sx8ZYr4DP4XULWck6vYnDOlt3eqWqBQkXiz9TRPH13foV2seiSd3dWqyFoRUjhx5m4zrSK2oX7l4FT5SjX3filEfU57lQrrn0K4IAnA1p04JOdS7hotZ9yGVAm5pgRmdbAhdO3y/FJlnnieiCuET9QuAIaAD4FM9UKxsm2Sjd6FST399cGMNrwiCxyyYvcKA+29OyO9gg7EC/q+5tfb49YnpqzEYBaNJrRGm+NhMFgKr97B5xxdlWl39uMY2SgGASSfrXDNIF//MaWC9jTzf30A+1mocJvQdTanGHilAbGijL91u/9f1CQEOGQtzgAHDNeutZXCGz3oCmdBqyPk7UZZNO4akHVPlYK03rnCVWj0YjQY6VEZNx91rZgsDTUI8bWWx0jOWW3WsF6DWDDkjl1qS7IkgE8FrUp2bkuWZtALMRRUrht6rn93bFONLEc2495oWa7ReOF5Gw=
 
-  provider: npm
-  email: gwshark0@gmail.com
-  api_key:
-    secure: olX0d/mUwchzaBhfmKzre7X9Yp1v+acPMgAAQ6aXdPTJv2J/3Tg4CZWYa4O52VmIGCsE6KxhyoYuCwSPcuEfUrAYxum4oFeBDtFYbdxyO7Z7YSXz5ycdkUqGMVr7fLxSj9pHNGzXx/FL2WzhCycz52Zrf6Y8pJ31H/BNofUQ13d11Oxy2lC/Sg/D8eRZYX4F4jIVEypVxPsXU82TmUpwatsxWu4Tx2sx8ZYr4DP4XULWck6vYnDOlt3eqWqBQkXiz9TRPH13foV2seiSd3dWqyFoRUjhx5m4zrSK2oX7l4FT5SjX3filEfU57lQrrn0K4IAnA1p04JOdS7hotZ9yGVAm5pgRmdbAhdO3y/FJlnnieiCuET9QuAIaAD4FM9UKxsm2Sjd6FST399cGMNrwiCxyyYvcKA+29OyO9gg7EC/q+5tfb49YnpqzEYBaNJrRGm+NhMFgKr97B5xxdlWl39uMY2SgGASSfrXDNIF//MaWC9jTzf30A+1mocJvQdTanGHilAbGijL91u/9f1CQEOGQtzgAHDNeutZXCGz3oCmdBqyPk7UZZNO4akHVPlYK03rnCVWj0YjQY6VEZNx91rZgsDTUI8bWWx0jOWW3WsF6DWDDkjl1qS7IkgE8FrUp2bkuWZtALMRRUrht6rn93bFONLEc2495oWa7ReOF5Gw=
+  - provider: s3
+    on:
+      tags: true
+      repo: GWShark0/mulch
+    skip_cleanup: true
+    acl: public_read
+    local_dir: dist
+    upload-dir: $(cat package.json | jq -r '.version')
+    bucket: $ARTIFACTS_BUCKET
+    access_key_id: $ARTIFACTS_KEY
+    secret_access_key: $ARTIFACTS_SECRET
